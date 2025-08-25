@@ -18,7 +18,7 @@ class YogaStudioApp {
     }
 
     isValidPhone(phone) {
-        if (!phone) return false;
+        if (!phone) return true; // Разрешаем пустое значение
         // Проверяем формат +7 900 123-45-67
         const phoneRegex = /^\+7\s\d{3}\s\d{3}-\d{2}-\d{2}$/;
         return phoneRegex.test(phone);
@@ -878,7 +878,9 @@ async getSessionsForDate(date) {
     // Проверяем уникальность телефона
     if (formData.phone) {
         const existingClients = await this.getAllClients();
-        const duplicate = existingClients.find(client => client.phone === formData.phone);
+        const duplicate = existingClients.find(client => 
+            client.phone && client.phone === formData.phone
+        );
         
         if (duplicate) {
             this.showNotification('Клиент с таким телефоном уже существует', 'error');
@@ -1326,7 +1328,7 @@ async updateClassTypeInDB(classTypeId, classTypeData) {
                     <div class="form-group">
                         <label>Телефон:</label>
                         <input type="tel" id="editClientPhone" value="${this.escapeHtml(client.phone || '')}" 
-                               placeholder="+7 900 123 45 67" oninput="app.formatPhone(this)">
+            placeholder="+7 900 123 45 67" oninput="app.formatPhone(this)">
                     </div>
                     <div class="form-group">
                         <label>Email:</label>
@@ -1371,37 +1373,37 @@ async updateClassTypeInDB(classTypeId, classTypeData) {
     }
 
     async updateClient() {
-        const clientId = parseInt(document.getElementById('editClientId').value);
-        const formData = {
-            name: document.getElementById('editClientName').value,
-            phone: document.getElementById('editClientPhone').value,
-            email: document.getElementById('editClientEmail').value,
-            notes: document.getElementById('editClientNotes').value
-        };
+       const clientId = parseInt(document.getElementById('editClientId').value);
+       const formData = {
+           name: document.getElementById('editClientName').value,
+           phone: document.getElementById('editClientPhone').value,
+           email: document.getElementById('editClientEmail').value,
+           notes: document.getElementById('editClientNotes').value
+       };
 
-        try {
-            // Проверяем уникальность телефона
-            if (formData.phone) {
-                const existingClients = await this.getAllClients();
-                const duplicate = existingClients.find(client => 
-                    client.phone === formData.phone && client.id !== clientId
-                );
+    try {
+        // Проверяем уникальность телефона только если он не пустой
+        if (formData.phone) {
+            const existingClients = await this.getAllClients();
+            const duplicate = existingClients.find(client => 
+                client.phone && client.phone === formData.phone && client.id !== clientId
+            );
 
-                if (duplicate) {
-                    this.showNotification('Клиент с таким телефоном уже существует', 'error');
-                    return;
-                }
+            if (duplicate) {
+                this.showNotification('Клиент с таким телефоном уже существует', 'error');
+                return;
             }
-
-            await this.updateClientInDB(clientId, formData);
-            this.hideModal();
-            this.loadClients();
-            this.showNotification('Данные клиента успешно обновлены', 'success');
-        } catch (error) {
-            this.showNotification('Ошибка при обновлении клиента', 'error');
-            console.error('Ошибка обновления клиента:', error);
         }
+
+        await this.updateClientInDB(clientId, formData);
+        this.hideModal();
+        this.loadClients();
+        this.showNotification('Данные клиента успешно обновлены', 'success');
+    } catch (error) {
+        this.showNotification('Ошибка при обновлении клиента', 'error');
+        console.error('Ошибка обновления клиента:', error);
     }
+}
 
     async updateClientInDB(clientId, clientData) {
         return new Promise((resolve, reject) => {
@@ -1803,8 +1805,14 @@ async updateClassTypeInDB(classTypeId, classTypeData) {
     }
 
     formatPhone(input) {
-        // Очищаем от всего, кроме цифр
+    // Очищаем от всего, кроме цифр
     let value = input.value.replace(/\D/g, '');
+    
+    // Если поле пустое, оставляем как есть
+    if (value === '') {
+        input.value = '';
+        return;
+    }
 
     // Убираем лидирующую 8, заменяем на 7 (российский формат)
     if (value.startsWith('8') && value.length > 1) {
