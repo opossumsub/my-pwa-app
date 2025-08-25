@@ -1,0 +1,24 @@
+{
+    "name": "Yoga Studio Admin",
+    "short_name": "YogaAdmin",
+    "description": "Приложение для администратора йога-студии",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#8db600",
+    "theme_color": "#8db600",
+    "orientation": "portrait",
+    "icons": [
+        {
+            "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgdmlld0JveD0iMCAwIDE5MiAxOTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjE5MiIgaGVpZ2h0PSIxOTIiIGZpbGw9IiM4ZGI2MDAiLz48cGF0aCBkPSJNOTYgMzZMODAgNjBMOTYgODRMMTEyIDYwTDk2IDM2WiIgZmlsbD0id2hpdGUiLz48cGF0aCBkPSJNNjAgODRMOTYgMTIwTDEzMiA4NEw5NiA0OEw2MCA4NFoiIGZpbGw9IndoaXRlIi8+PHBhdGggZD0iTTM2IDk2TDYwIDEyMEw5NiA4NEw3MiA2MEwzNiA5NloiIGZpbGw9IndoaXRlIi8+PHBhdGggZD0iTTM2IDk2TDYwIDcyTDk2IDEwOEw3MiAxMzJMMzYgOTZaIiBmaWxsPSJ3aGl0ZSIvPjxwYXRoIGQ9Ik0xNTYgOTZMMTIwIDYwTDk2IDg0TDEzMiAxMjBMMTU2IDk2WiIgZmlsbD0id2hpdGUiLz48cGF0aCBkPSJNMTU2IDk2TDEzMiA3Mkw5NiAxMDhMMTIwIDEzMkwxNTYgOTZaIiBmaWxsPSJ3aGl0ZSIvPjwvc3ZnPg==",
+            "sizes": "192x192",
+            "type": "image/svg+xml"
+        },
+        {
+            "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDUxMiA1MTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIGZpbGw9IiM4ZGI2MDAiLz48cGF0aCBkPSJNMjU2IDEwMEwyMTMgMTg2TDI1NiAyNzJMMjk5IDE4NkwyNTYgMTAwWiIgZmlsbD0id2hpdGUiLz48cGF0aCBkPSJNMTg2IDIxM0wyNTYgMjcwTDMyNiAyMTNMMjU2IDE1NkwxODYgMjEzWiIgZmlsbD0id2hpdGUiLz48cGF0aCBkPSJNMTAwIDI1NkwxODYgMjk5TDI1NiAyMTNMMTcyIDE3MEwxMDAgMjU2WiIgZmlsbD0id2hpdGUiLz48cGF0aCBkPSJNMTAwIDI1NkwxODYgMjEzTDI1NiAyOTlMMTcyIDM0MkwxMDAgMjU2WiIgZmlsbD0id2hpdGUiLz48cGF0aCBkPSJNNDEyIDI1NkwzMjYgMjEzTDI1NiAyOTlMMzQwIDM0Mkw0MTIgMjU2WiIgZmlsbD0id2hpdGUiLz48cGF0aCBkPSJNNDEyIDI1NkwzMjYgMjk5TDI1NiAyMTNMMzQwIDE3MEw0MTIgMjU2WiIgZmlsbD0id2hpdGUiLz48L3N2Zz4=",
+            "sizes": "512x512",
+            "type": "image/svg+xml"
+        }
+    ],
+    "categories": ["business", "productivity"],
+    "lang": "ru"
+}

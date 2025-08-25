@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yoga Studio Admin</title>
+    <meta name="theme-color" content="#8db600">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pangolin&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-spa"></i> Yoga Studio Admin</h1>
+            <div class="header-actions">
+                <button id="themeToggle" class="btn btn-secondary">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button id="syncBtn" class="btn btn-secondary">
+                    <i class="fas fa-sync"></i> Синхронизация
+                </button>
+            </div>
+        </header>
+
+        <nav class="tabs">
+            <button class="tab-btn active" data-tab="schedule">Расписание</button>
+            <button class="tab-btn" data-tab="clients">Клиенты</button>
+            <button class="tab-btn" data-tab="classes">Занятия</button>
+            <button class="tab-btn" data-tab="stats">Статистика</button>
+        </nav>
+
+        <main>
+            <!-- Вкладка Расписание -->
+            <div id="schedule" class="tab-content active">
+                <div class="schedule-header">
+                    <h2>Расписание занятий</h2>
+                    <button id="addSessionBtn" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Добавить занятие
+                    </button>
+                </div>
+                <div class="date-navigation">
+                    <button id="prevWeek" class="btn btn-secondary">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <h3 id="currentWeek"></h3>
+                    <button id="nextWeek" class="btn btn-secondary">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div id="scheduleGrid" class="schedule-grid"></div>
+            </div>
+
+            <!-- Вкладка Клиенты -->
+            <div id="clients" class="tab-content">
+                <h2>Клиенты</h2>
+                <div class="search-box">
+                    <input type="text" id="clientSearch" placeholder="Поиск клиентов...">
+                    <button id="addClientBtn" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Добавить клиента
+                    </button>
+                </div>
+                <div id="clientsList" class="clients-list"></div>
+            </div>
+
+            <!-- Вкладка Занятия -->
+            <div id="classes" class="tab-content">
+                <h2>Типы занятий</h2>
+                <button id="addClassBtn" class="btn btn-primary">
+                    <i class="fas fa-plus"></i> Добавить тип занятия
+                </button>
+                <div id="classesList" class="classes-list"></div>
+            </div>
+
+            <!-- Вкладка Статистика -->
+            <div id="stats" class="tab-content">
+                <h2>Статистика</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Всего клиентов</h3>
+                        <p id="totalClients">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Занятий на этой неделе</h3>
+                        <p id="weekSessions">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Средняя заполняемость</h3>
+                        <p id="avgAttendance">0%</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Модальные окна -->
+    <div id="modalOverlay" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="modalTitle">Заголовок</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
